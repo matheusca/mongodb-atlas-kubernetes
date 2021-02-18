@@ -83,7 +83,7 @@ func (r *AtlasDatabaseUserReconciler) Reconcile(req ctrl.Request) (ctrl.Result, 
 	}
 	ctx.Client = atlasClient
 
-	result = r.ensureDatabaseUser(ctx, project, *databaseUser)
+	result = r.ensureDatabaseUser(ctx, *project, *databaseUser)
 	if !result.IsOk() {
 		ctx.SetConditionFromResult(status.DatabaseUserReadyType, result)
 		return result.ReconcileResult(), nil
